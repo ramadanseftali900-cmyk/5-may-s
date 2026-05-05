@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site Kontrol</title>
+</head>
+<body>
+    <h1>Site Kontrol Testi</h1>
+    <div id="results"></div>
+    
+    <script>
+        // Site erişim testi
+        fetch('https://kargonburada.online')
+            .then(response => {
+                document.getElementById('results').innerHTML = 
+                    `<p>✅ Site erişilebilir: ${response.status}</p>`;
+                
+                // Meta Pixel kontrolü
+                return fetch('https://kargonburada.online');
+            })
+            .then(response => response.text())
+            .then(html => {
+                if (html.includes('960336256818177')) {
+                    document.getElementById('results').innerHTML += 
+                        `<p>✅ Meta Pixel ID bulundu: 960336256818177</p>`;
+                } else {
+                    document.getElementById('results').innerHTML += 
+                        `<p>❌ Meta Pixel ID bulunamadı</p>`;
+                }
+                
+                if (html.includes('facebook-domain-verification')) {
+                    document.getElementById('results').innerHTML += 
+                        `<p>✅ Domain verification kodu bulundu</p>`;
+                } else {
+                    document.getElementById('results').innerHTML += 
+                        `<p>❌ Domain verification kodu bulunamadı</p>`;
+                }
+            })
+            .catch(error => {
+                document.getElementById('results').innerHTML = 
+                    `<p>❌ Site erişim hatası: ${error}</p>`;
+            });
+    </script>
+</body>
+</html>

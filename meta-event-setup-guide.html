@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meta Event Setup Tool Rehberi</title>
+    
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '842914244957741');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=842914244957741&ev=PageView&noscript=1"/></noscript>
+    <!-- End Meta Pixel Code -->
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1877F2 0%, #42B72A 100%); 
+            min-height: 100vh; 
+            color: #fff; 
+            padding: 20px;
+        }
+        .container { max-width: 1000px; margin: 0 auto; }
+        .header { text-align: center; padding: 30px 0; }
+        .header h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .card {
+            background: rgba(255,255,255,0.95);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 20px;
+            color: #333;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .card h2 { color: #1877F2; margin-bottom: 20px; font-size: 24px; }
+        .step {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-left: 5px solid #1877F2;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 10px;
+        }
+        .step h3 { color: #1877F2; margin-bottom: 10px; }
+        .code-block {
+            background: #2d3748;
+            color: #68d391;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: monospace;
+            font-size: 14px;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+        .warning {
+            background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+            border: 2px solid #ffc107;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+            color: #856404;
+        }
+        .success {
+            background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+            border: 2px solid #28a745;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+            color: #155724;
+        }
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #1877F2 0%, #42B72A 100%);
+            color: #fff;
+            padding: 15px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 10px 5px;
+            transition: transform 0.2s;
+        }
+        .btn:hover { transform: scale(1.05); }
+        .event-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .event-item {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+        }
+        .event-item h4 { margin-bottom: 10px; font-size: 18px; }
+        .event-item p { font-size: 14px; opacity: 0.9; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎯 Meta Event Setup Tool Rehberi</h1>
+            <p style="font-size: 18px; opacity: 0.9;">Pixel ID: 842914244957741</p>
+        </div>
+
+        <div class="card">
+            <h2>📋 1. ADIM: Event Setup Tool'u Açın</h2>
+            
+            <div class="step">
+                <h3>🔗 Meta Events Manager'a Git</h3>
+                <p>1. <a href="https://business.facebook.com/events_manager" target="_blank" style="color: #1877F2; font-weight: bold;">Meta Events Manager</a>'ı açın</p>
+                <p>2. Pixel ID'nizi seçin: <strong>842914244957741</strong></p>
+                <p>3. Sol menüden "Event Setup Tool" seçin</p>
+            </div>
+
+            <div class="warning">
+                <strong>⚠️ ÖNEMLİ:</strong> Event Setup Tool kullanmadan önce sitenizin Meta Pixel kodunun doğru çalıştığından emin olun. Yukarıda zaten kodunuz var!
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>🛠️ 2. ADIM: Otomatik Event Kurulumu</h2>
+            
+            <div class="step">
+                <h3>🌐 Website URL'nizi Girin</h3>
+                <div class="code-block">
+https://kargonburada.online
+                </div>
+                <p>Event Setup Tool sitenizi tarayacak ve otomatik olarak eventleri tespit edecek.</p>
+            </div>
+
+            <div class="step">
+                <h3>🎯 Kurulacak Eventler</h3>
+                <div class="event-list">
+                    <div class="event-item">
+                        <h4>🛒 Purchase</h4>
+                        <p>Sipariş tamamlandığında</p>
+                    </div>
+                    <div class="event-item">
+                        <h4>👁️ ViewContent</h4>
+                        <p>Ürün sayfası görüntülendiğinde</p>
+                    </div>
+                    <div class="event-item">
+                        <h4>🛍️ AddToCart</h4>
+                        <p>Sepete ekleme butonuna tıklandığında</p>
+                    </div>
+                    <div class="event-item">
+                        <h4>📝 Lead</h4>
+                        <p>Form gönderildiğinde</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>⚙️ 3. ADIM: Manuel Event Ayarları</h2>
+            
+            <div class="step">
+                <h3>🛒 Purchase Event Ayarları</h3>
+                <p><strong>Tetikleyici:</strong> Sipariş başarı sayfası veya "Sipariş Ver" butonu</p>
+                <p><strong>Parametreler:</strong></p>
+                <div class="code-block">
+value: Sipariş tutarı (örn: 299.90)
+currency: TRY
+content_ids: Ürün ID'si
+content_name: Ürün adı
+content_type: product
+num_items: Adet
+                </div>
+            </div>
+
+            <div class="step">
+                <h3>👁️ ViewContent Event Ayarları</h3>
+                <p><strong>Tetikleyici:</strong> Ürün sayfası yüklendiğinde</p>
+                <p><strong>Parametreler:</strong></p>
+                <div class="code-block">
+value: Ürün fiyatı
+currency: TRY
+content_ids: Ürün ID'si
+content_name: Ürün adı
+content_type: product
+                </div>
+            </div>
+
+            <div class="step">
+                <h3>🛍️ AddToCart Event Ayarları</h3>
+                <p><strong>Tetikleyici:</strong> "Sepete Ekle" veya "Sipariş Ver" butonu</p>
+                <p><strong>Parametreler:</strong></p>
+                <div class="code-block">
+value: Ürün fiyatı
+currency: TRY
+content_ids: Ürün ID'si
+content_name: Ürün adı
+content_type: product
+quantity: Adet
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>🧪 4. ADIM: Test ve Doğrulama</h2>
+            
+            <div class="step">
+                <h3>🔍 Event Test Etme</h3>
+                <p>1. Event Setup Tool'da "Test" butonuna basın</p>
+                <p>2. Sitenizde işlem yapın (ürün görüntüle, sipariş ver)</p>
+                <p>3. Events Manager'da "Test Events" sekmesinde kontrol edin</p>
+            </div>
+
+            <div class="success">
+                <strong>✅ BAŞARILI KURULUM İÇİN:</strong><br>
+                • Purchase eventlerinde value ve currency parametreleri doğru olmalı<br>
+                • ViewContent eventleri ürün sayfalarında tetiklenmeli<br>
+                • AddToCart eventleri sepete ekleme işlemlerinde çalışmalı
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>🚀 5. ADIM: Gelişmiş Ayarlar</h2>
+            
+            <div class="step">
+                <h3>📊 Conversions API Kurulumu</h3>
+                <p>Server-side tracking için Conversions API'yi de kurun:</p>
+                <div class="code-block">
+1. Meta Business Settings → Data Sources → Conversions API
+2. Access Token oluşturun
+3. Server endpoint'inizi ayarlayın
+4. Test edin ve doğrulayın
+                </div>
+            </div>
+
+            <div class="step">
+                <h3>🎯 Optimizasyon Ayarları</h3>
+                <p>Reklam kampanyalarınızda:</p>
+                <div class="code-block">
+• Conversion Objective: Purchase
+• Optimization Event: Purchase
+• Attribution Setting: 7-day click, 1-day view
+• Value-based bidding: Aktif
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>📞 Hızlı Kontrol</h2>
+            
+            <div class="step">
+                <h3>🔧 Browser Console Test</h3>
+                <p>F12 → Console → Aşağıdaki kodu çalıştırın:</p>
+                <div class="code-block">
+// Meta Pixel kontrolü
+console.log('Meta Pixel:', typeof fbq !== 'undefined' ? '✅ Aktif' : '❌ Yok');
+
+// Test Purchase event
+fbq('track', 'Purchase', {
+    value: 299.90,
+    currency: 'TRY',
+    content_ids: ['test_product'],
+    content_name: 'Test Ürünü',
+    content_type: 'product',
+    num_items: 1
+});
+
+console.log('✅ Test Purchase event gönderildi!');
+                </div>
+            </div>
+
+            <div class="step">
+                <h3>📱 Mobil Test</h3>
+                <p>Mobil cihazlarda da test edin:</p>
+                <p>• Chrome DevTools → Device Toolbar</p>
+                <p>• Gerçek mobil cihazda test</p>
+                <p>• iOS Safari ve Android Chrome'da kontrol</p>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin: 40px 0;">
+            <a href="https://business.facebook.com/events_manager" target="_blank" class="btn">
+                🚀 Meta Events Manager'ı Aç
+            </a>
+            <a href="pixel-test.html" class="btn">
+                🧪 Pixel Test Sayfası
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Sayfa yüklendiğinde otomatik test
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🎯 Meta Event Setup Rehber Sayfası Yüklendi');
+            console.log('📊 Pixel ID: 842914244957741');
+            console.log('🔍 Meta Pixel:', typeof fbq !== 'undefined' ? '✅ Aktif' : '❌ Yok');
+            
+            // ViewContent event gönder
+            if (typeof fbq !== 'undefined') {
+                fbq('track', 'ViewContent', {
+                    content_name: 'Meta Event Setup Rehberi',
+                    content_type: 'article',
+                    value: 0,
+                    currency: 'TRY'
+                });
+                console.log('✅ ViewContent event gönderildi');
+            }
+        });
+    </script>
+</body>
+</html>

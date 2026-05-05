@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meta Domain Doğrulama Rehberi</title>
+    
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '842914244957741');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=842914244957741&ev=PageView&noscript=1"/></noscript>
+    <!-- End Meta Pixel Code -->
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ff6b6b 0%, #4ecdc4 100%); 
+            min-height: 100vh; 
+            color: #fff; 
+            padding: 20px;
+        }
+        .container { max-width: 900px; margin: 0 auto; }
+        .header { text-align: center; padding: 30px 0; }
+        .header h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .card {
+            background: rgba(255,255,255,0.95);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 20px;
+            color: #333;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .card h2 { color: #ff6b6b; margin-bottom: 20px; font-size: 24px; }
+        .step {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-left: 5px solid #ff6b6b;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 10px;
+        }
+        .step h3 { color: #ff6b6b; margin-bottom: 10px; }
+        .code-block {
+            background: #2d3748;
+            color: #68d391;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: monospace;
+            font-size: 14px;
+            margin: 15px 0;
+            overflow-x: auto;
+            border: 2px solid #4ecdc4;
+        }
+        .warning {
+            background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+            border: 2px solid #ffc107;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+            color: #856404;
+        }
+        .success {
+            background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+            border: 2px solid #28a745;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+            color: #155724;
+        }
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff6b6b 0%, #4ecdc4 100%);
+            color: #fff;
+            padding: 15px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 10px 5px;
+            transition: transform 0.2s;
+        }
+        .btn:hover { transform: scale(1.05); }
+        .copy-btn {
+            background: #4ecdc4;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        .input-area {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #4ecdc4;
+            border-radius: 10px;
+            font-family: monospace;
+            font-size: 14px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌐 Meta Domain Doğrulama</h1>
+            <p style="font-size: 18px; opacity: 0.9;">kargonburada.online için</p>
+        </div>
+
+        <div class="card">
+            <h2>🚨 PROBLEM: İnternet Siteleri Bulunamadı</h2>
+            
+            <div class="warning">
+                <strong>⚠️ DURUM:</strong> Meta, sitenizi (kargonburada.online) henüz doğrulamamış. Bu yüzden "İnternet siteleri" bölümü boş görünüyor ve bazı özellikler çalışmayabilir.
+            </div>
+
+            <div class="step">
+                <h3>📋 Neden Gerekli?</h3>
+                <p>• Meta reklamlarında domain güvenliği için</p>
+                <p>• iOS 14.5+ güncellemelerine karşı koruma</p>
+                <p>• Conversions API için gerekli</p>
+                <p>• Daha iyi event tracking</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>✅ ÇÖZÜM: Adım Adım Domain Doğrulama</h2>
+            
+            <div class="step">
+                <h3>1️⃣ Meta Business Manager'a Git</h3>
+                <p>Aşağıdaki linke tıklayın:</p>
+                <div class="code-block">
+https://business.facebook.com/settings/owned-domains
+                </div>
+                <a href="https://business.facebook.com/settings/owned-domains" target="_blank" class="btn">
+                    🔗 Business Manager'ı Aç
+                </a>
+            </div>
+
+            <div class="step">
+                <h3>2️⃣ Domain Ekle</h3>
+                <p>• "Add Domain" butonuna tıklayın</p>
+                <p>• Domain adını girin:</p>
+                <div class="code-block">
+kargonburada.online
+                </div>
+                <p>• "Add Domain" butonuna tıklayın</p>
+            </div>
+
+            <div class="step">
+                <h3>3️⃣ Doğrulama Yöntemi Seç</h3>
+                <p><strong>"Add Meta Tag"</strong> seçeneğini seçin (en kolay yöntem)</p>
+                <div class="warning">
+                    <strong>DİKKAT:</strong> DNS veya HTML dosyası yöntemlerini seçmeyin, Meta Tag en kolay olanı!
+                </div>
+            </div>
+
+            <div class="step">
+                <h3>4️⃣ Meta Tag'i Kopyala</h3>
+                <p>Meta size şöyle bir kod verecek:</p>
+                <div class="code-block">
+&lt;meta name="facebook-domain-verification" content="abc123xyz456789" /&gt;
+                </div>
+                <p><strong>Bu kodu kopyalayın!</strong></p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>📝 5. ADIM: Kodu Sitenize Ekleyin</h2>
+            
+            <div class="step">
+                <h3>🔧 Meta Verification Kodunuzu Buraya Yapıştırın</h3>
+                <textarea id="metaCode" class="input-area" placeholder='<meta name="facebook-domain-verification" content="abc123xyz456789" />' rows="3"></textarea>
+                <button class="copy-btn" onclick="generateUpdatedCode()">📋 Güncellenmiş Kodu Oluştur</button>
+            </div>
+
+            <div id="updatedCodeSection" style="display: none;">
+                <div class="step">
+                    <h3>✅ Güncellenmiş index.html Kodu</h3>
+                    <p>Aşağıdaki kodu kopyalayın ve index.html dosyanızın başına yapıştırın:</p>
+                    <div class="code-block" id="updatedCode"></div>
+                    <button class="copy-btn" onclick="copyUpdatedCode()">📋 Kopyala</button>
+                </div>
+
+                <div class="success">
+                    <strong>✅ YAPILACAKLAR:</strong><br>
+                    1. Yukarıdaki kodu kopyalayın<br>
+                    2. GitHub'da index.html dosyasını açın<br>
+                    3. Mevcut &lt;head&gt; bölümünü değiştirin<br>
+                    4. Commit edin ve deploy bekleyin<br>
+                    5. Meta'da "Verify Domain" butonuna basın
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>🧪 6. ADIM: Test ve Doğrulama</h2>
+            
+            <div class="step">
+                <h3>⏱️ Bekleme Süresi</h3>
+                <p>• Kod eklendikten sonra 5-10 dakika bekleyin</p>
+                <p>• Meta'nın sitenizi taraması gerekiyor</p>
+                <p>• Vercel otomatik deploy edecek</p>
+            </div>
+
+            <div class="step">
+                <h3>✅ Doğrulama</h3>
+                <p>• Meta Business Manager'a geri dönün</p>
+                <p>• "Verify Domain" butonuna basın</p>
+                <p>• Başarılı olursa ✅ işareti görünecek</p>
+            </div>
+
+            <div class="step">
+                <h3>🔍 Kontrol</h3>
+                <p>Doğrulama başarılı olduktan sonra:</p>
+                <p>• Events Manager → Veri Setleri</p>
+                <p>• "İnternet siteleri" bölümünde siteniz görünecek</p>
+                <p>• Artık tüm özellikler aktif olacak</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>🚀 SONUÇ</h2>
+            
+            <div class="success">
+                <strong>✅ DOMAIN DOĞRULANDIKTAN SONRA:</strong><br>
+                • İnternet siteleri bölümünde kargonburada.online görünecek<br>
+                • iOS 14.5+ koruması aktif olacak<br>
+                • Conversions API kullanabileceksiniz<br>
+                • Daha iyi event tracking<br>
+                • Daha yüksek ROAS
+            </div>
+
+            <div style="text-align: center; margin: 30px 0;">
+                <a href="https://business.facebook.com/settings/owned-domains" target="_blank" class="btn">
+                    🌐 Domain Doğrulama Sayfası
+                </a>
+                <a href="https://business.facebook.com/events_manager" target="_blank" class="btn">
+                    📊 Events Manager
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function generateUpdatedCode() {
+            const metaCode = document.getElementById('metaCode').value.trim();
+            
+            if (!metaCode) {
+                alert('Lütfen Meta verification kodunu yapıştırın!');
+                return;
+            }
+            
+            // Meta tag'i temizle ve düzelt
+            let cleanCode = metaCode;
+            if (!cleanCode.includes('<meta name="facebook-domain-verification"')) {
+                // Sadece content kısmı yapıştırılmışsa
+                const contentMatch = metaCode.match(/content="([^"]+)"/);
+                if (contentMatch) {
+                    cleanCode = `<meta name="facebook-domain-verification" content="${contentMatch[1]}" />`;
+                } else {
+                    // Sadece kod yapıştırılmışsa
+                    cleanCode = `<meta name="facebook-domain-verification" content="${metaCode}" />`;
+                }
+            }
+            
+            const updatedCode = `<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Hızlı Kargo - Ürün Sayfası | kargonburada.online</title>
+
+<!-- Facebook Domain Verification -->
+${cleanCode}
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '842914244957741');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=842914244957741&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->`;
+            
+            document.getElementById('updatedCode').textContent = updatedCode;
+            document.getElementById('updatedCodeSection').style.display = 'block';
+            
+            // Başarı sesi (eğer varsa)
+            console.log('✅ Güncellenmiş kod oluşturuldu!');
+        }
+        
+        function copyUpdatedCode() {
+            const code = document.getElementById('updatedCode').textContent;
+            navigator.clipboard.writeText(code).then(function() {
+                alert('✅ Kod kopyalandı! Şimdi GitHub\'da index.html dosyasına yapıştırın.');
+            }).catch(function() {
+                // Fallback
+                const textarea = document.createElement('textarea');
+                textarea.value = code;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                alert('✅ Kod kopyalandı! Şimdi GitHub\'da index.html dosyasına yapıştırın.');
+            });
+        }
+        
+        // Sayfa yüklendiğinde
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🌐 Domain Doğrulama Rehberi Yüklendi');
+        });
+    </script>
+</body>
+</html>

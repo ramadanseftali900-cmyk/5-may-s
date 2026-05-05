@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meta Pixel Test - Purchase Event Kontrolü</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%); 
+            min-height: 100vh; 
+            color: #fff; 
+            padding: 20px;
+        }
+        .container { max-width: 800px; margin: 0 auto; }
+        .header { text-align: center; padding: 30px 0; }
+        .header h1 {
+            font-size: 36px;
+            background: linear-gradient(135deg, #1877F2 0%, #42B72A 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+        .card {
+            background: rgba(255,255,255,0.05);
+            border: 2px solid rgba(24, 119, 242, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 20px;
+        }
+        .card h2 { color: #1877F2; margin-bottom: 20px; }
+        .test-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #1877F2 0%, #42B72A 100%);
+            border: none;
+            border-radius: 10px;
+            color: #fff;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 10px 0;
+        }
+        .test-btn:hover { opacity: 0.9; transform: scale(1.02); }
+        .log-area {
+            background: rgba(0,0,0,0.5);
+            border: 1px solid #333;
+            border-radius: 10px;
+            padding: 20px;
+            height: 300px;
+            overflow-y: auto;
+            font-family: monospace;
+            font-size: 12px;
+            color: #0f0;
+        }
+        .input-group { margin-bottom: 15px; }
+        .input-group label { display: block; color: #888; margin-bottom: 8px; }
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid rgba(24, 119, 242, 0.3);
+            border-radius: 8px;
+            background: rgba(0,0,0,0.3);
+            color: #fff;
+            font-size: 16px;
+        }
+        .status { padding: 10px; border-radius: 8px; margin: 10px 0; text-align: center; }
+        .status.success { background: rgba(46, 213, 115, 0.2); border: 1px solid #2ed573; color: #2ed573; }
+        .status.error { background: rgba(255, 71, 87, 0.2); border: 1px solid #ff4757; color: #ff4757; }
+        .status.warning { background: rgba(255, 193, 7, 0.2); border: 1px solid #ffc107; color: #ffc107; }
+    </style>
+</head>
+<body>
+    <!-- Firebase ve Pixel Loader'ı yükle -->
+    <script src="site-config.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="pixel-loader.js"></script>
+
+    <div class="container">
+        <div class="header">
+            <h1>🧪 Meta Pixel Test</h1>
+            <p style="color:#888">Purchase Event Kontrolü</p>
+        </div>
+
+        <div class="card">
+            <h2>📊 Pixel Durumu</h2>
+            <div id="pixelStatus" class="status warning">Kontrol ediliyor...</div>
+        </div>
+
+        <div class="card">
+            <h2>🛒 Purchase Event Testi</h2>
+            <div class="input-group">
+                <label>Ürün Adı:</label>
+                <input type="text" id="productName" value="Test Ürünü" placeholder="Ürün adını girin">
+            </div>
+            <div class="input-group">
+                <label>Fiyat (TL):</label>
+                <input type="text" id="productPrice" value="299,90" placeholder="Örn: 299,90 veya 1.250,50">
+            </div>
+            <div class="input-group">
+                <label>Adet:</label>
+                <input type="number" id="productQuantity" value="1" min="1">
+            </div>
+            
+            <!-- Gelişmiş Eşleştirme Test Alanları -->
+            <div style="border-top: 2px solid #1877F2; margin: 20px 0; padding-top: 20px;">
+                <h3 style="color: #1877F2; margin-bottom: 15px;">🔗 Gelişmiş Eşleştirme Test</h3>
+                <div class="input-group">
+                    <label>Email:</label>
+                    <input type="email" id="testEmail" name="email" placeholder="test@example.com">
+                </div>
+                <div class="input-group">
+                    <label>Telefon:</label>
+                    <input type="tel" id="testPhone" name="phone" placeholder="05551234567">
+                </div>
+                <div class="input-group">
+                    <label>Ad:</label>
+                    <input type="text" id="testFirstName" name="name" placeholder="Ahmet">
+                </div>
+                <div class="input-group">
+                    <label>Soyad:</label>
+                    <input type="text" id="testLastName" name="surname" placeholder="Yılmaz">
+                </div>
+                <div class="input-group">
+                    <label>Şehir:</label>
+                    <input type="text" id="testCity" name="city" placeholder="İstanbul">
+                </div>
+            </div>
+            
+            <button class="test-btn" onclick="testPurchaseEvent()">🛒 Purchase Event Gönder</button>
+            <button class="test-btn" onclick="testViewContentEvent()">👁️ ViewContent Event Gönder</button>
+            <button class="test-btn" onclick="testAddToCartEvent()">🛍️ AddToCart Event Gönder</button>
+        </div>
+
+        <div class="card">
+            <h2>📝 Event Logları</h2>
+            <div id="logArea" class="log-area">
+                Test başlatılıyor...\n
+            </div>
+            <button class="test-btn" onclick="clearLogs()" style="background: #666;">🗑️ Logları Temizle</button>
+        </div>
+
+        <div class="card">
+            <h2>🔍 Meta Events Manager Kontrolü</h2>
+            <p style="color:#ccc;line-height:1.8">
+                1. <a href="https://business.facebook.com/events_manager" target="_blank" style="color:#1877F2">Meta Events Manager</a>'ı aç<br>
+                2. Pixel'inizi seçin<br>
+                3. "Test Events" sekmesine git<br>
+                4. Yukarıdaki butonlara basın ve eventlerin gelip gelmediğini kontrol edin<br>
+                5. Purchase eventlerinde <strong>value</strong> ve <strong>currency: TRY</strong> parametrelerini kontrol edin
+            </p>
+        </div>
+    </div>
+
+    <script>
+        let logArea = document.getElementById('logArea');
+        
+        function log(message, type = 'info') {
+            const timestamp = new Date().toLocaleTimeString();
+            const color = type === 'error' ? '#ff4757' : type === 'success' ? '#2ed573' : type === 'warning' ? '#ffc107' : '#0f0';
+            logArea.innerHTML += `<span style="color:${color}">[${timestamp}] ${message}</span>\n`;
+            logArea.scrollTop = logArea.scrollHeight;
+        }
+        
+        function clearLogs() {
+            logArea.innerHTML = 'Loglar temizlendi...\n';
+        }
+        
+        // Pixel durumunu kontrol et
+        function checkPixelStatus() {
+            const statusDiv = document.getElementById('pixelStatus');
+            
+            setTimeout(() => {
+                // Meta Pixel ID'si direkt HTML'de tanımlı
+                const metaPixelId = '960336256818177';
+                if (typeof fbq !== 'undefined' && metaPixelId) {
+                    statusDiv.className = 'status success';
+                    statusDiv.textContent = `✅ Meta Pixel aktif: ${metaPixelId}`;
+                    log(`Meta Pixel yüklendi: ${metaPixelId}`, 'success');
+                    window.metaPixelId = metaPixelId; // Global değişkene ata
+                } else {
+                    statusDiv.className = 'status error';
+                    statusDiv.textContent = '❌ Meta Pixel yüklenemedi!';
+                    log('Meta Pixel yüklenemedi!', 'error');
+                }
+                
+                if (window.tiktokPixelId) {
+                    log(`TikTok Pixel yüklendi: ${window.tiktokPixelId}`, 'success');
+                } else {
+                    log('TikTok Pixel bulunamadı', 'warning');
+                }
+            }, 1000); // Daha kısa süre
+        }
+        
+        // Purchase event test
+        function testPurchaseEvent() {
+            const productName = document.getElementById('productName').value || 'Test Ürünü';
+            const productPrice = document.getElementById('productPrice').value || '299,90';
+            const productQuantity = document.getElementById('productQuantity').value || '1';
+            
+            log(`Purchase Event testi başlatılıyor...`, 'info');
+            log(`Ürün: ${productName}`, 'info');
+            log(`Fiyat: ${productPrice} TL`, 'info');
+            log(`Adet: ${productQuantity}`, 'info');
+            
+            // Fiyatı formatla
+            const formattedPrice = (typeof formatPrice === 'function') ? formatPrice(productPrice) : parseFloat(productPrice.replace(/[^0-9,]/g, '').replace(',', '.')) || 0;
+            const productInfo = {
+                contentId: 'test_product_' + Date.now(),
+                contentName: productName + ' - ' + productQuantity + ' Adet',
+                quantity: parseInt(productQuantity)
+            };
+            
+            log(`Formatlanmış fiyat: ${formattedPrice} TRY`, 'info');
+            log(`Content ID: ${productInfo.contentId}`, 'info');
+            
+            // Minimum değer kontrolü
+            const finalPrice = Math.max(formattedPrice, 0.01);
+            if (finalPrice !== formattedPrice) {
+                log(`⚠️ Fiyat çok düşük, minimum 0.01 TL yapıldı`, 'warning');
+            }
+            
+            // Meta Pixel Purchase event - Gelişmiş parametrelerle
+            if (typeof fbq !== 'undefined') {
+                fbq('track', 'Purchase', {
+                    value: finalPrice,
+                    currency: 'TRY',
+                    content_ids: [productInfo.contentId],
+                    content_name: productInfo.contentName,
+                    content_type: 'product',
+                    content_category: 'ecommerce',
+                    num_items: productInfo.quantity,
+                    predicted_ltv: finalPrice * 1.2,
+                    order_id: 'test_order_' + Date.now(),
+                    delivery_category: 'home_delivery'
+                });
+                log('✅ Meta Purchase event gönderildi (Gelişmiş parametrelerle)', 'success');
+            } else {
+                log('❌ fbq fonksiyonu bulunamadı', 'error');
+            }
+            
+            // TikTok Pixel Purchase event
+            if (typeof fireTikTokSubmitFormEvent === 'function') {
+                fireTikTokSubmitFormEvent(finalPrice, productInfo.contentName, productInfo.contentId);
+                log('✅ TikTok Purchase event gönderildi', 'success');
+            } else {
+                log('❌ fireTikTokSubmitFormEvent fonksiyonu bulunamadı', 'error');
+            }
+            
+            log('🔍 Meta Events Manager\'da "Test Events" sekmesini kontrol edin!', 'warning');
+            log('📊 Warning\'ler düzeldi mi kontrol edin!', 'warning');
+        }
+        
+        // ViewContent event test
+        function testViewContentEvent() {
+            const productName = document.getElementById('productName').value || 'Test Ürünü';
+            const productPrice = document.getElementById('productPrice').value || '299,90';
+            
+            log(`ViewContent Event testi başlatılıyor...`, 'info');
+            
+            const formattedPrice = (typeof formatPrice === 'function') ? formatPrice(productPrice) : parseFloat(productPrice.replace(/[^0-9,]/g, '').replace(',', '.')) || 0;
+            const contentId = 'test_view_' + Date.now();
+            
+            if (typeof fireViewContent === 'function') {
+                fireViewContent(productName, contentId, formattedPrice);
+                log('✅ ViewContent event gönderildi', 'success');
+            } else {
+                log('❌ fireViewContent fonksiyonu bulunamadı', 'error');
+            }
+        }
+        
+        // AddToCart event test
+        function testAddToCartEvent() {
+            const productName = document.getElementById('productName').value || 'Test Ürünü';
+            const productPrice = document.getElementById('productPrice').value || '299,90';
+            const productQuantity = document.getElementById('productQuantity').value || '1';
+            
+            log(`AddToCart Event testi başlatılıyor...`, 'info');
+            
+            const formattedPrice = (typeof formatPrice === 'function') ? formatPrice(productPrice) : parseFloat(productPrice.replace(/[^0-9,]/g, '').replace(',', '.')) || 0;
+            const contentId = 'test_cart_' + Date.now();
+            
+            if (typeof fireAddToCart === 'function') {
+                fireAddToCart(productName, contentId, formattedPrice, productQuantity);
+                log('✅ AddToCart event gönderildi', 'success');
+            } else {
+                log('❌ fireAddToCart fonksiyonu bulunamadı', 'error');
+            }
+        }
+        
+        // Sayfa yüklendiğinde pixel durumunu kontrol et
+        document.addEventListener('DOMContentLoaded', function() {
+            log('Pixel Test sayfası yüklendi', 'info');
+            checkPixelStatus();
+        });
+        
+        // Console loglarını da yakala
+        const originalLog = console.log;
+        console.log = function(...args) {
+            originalLog.apply(console, args);
+            if (args[0] && args[0].includes && (args[0].includes('Meta') || args[0].includes('TikTok') || args[0].includes('Pixel'))) {
+                log(args.join(' '), args[0].includes('✅') ? 'success' : 'info');
+            }
+        };
+    </script>
+</body>
+</html>
