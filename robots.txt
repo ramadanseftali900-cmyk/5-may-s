@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /admin-*.html
 
-Sitemap: https://emenkargon.online/sitemap.xml
+Sitemap: https://kargonburada.online/sitemap.xml

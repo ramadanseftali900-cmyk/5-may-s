@@ -6,9 +6,6 @@
 <title id="pageTitle">Ürün Sayfası 5</title>
 <meta name="description" content="Ürün açıklaması yükleniyor..." id="pageDescription">
 
-<!-- Facebook Domain Verification -->
-<meta name="facebook-domain-verification" content="bjsxuxre5tqm3g9c5of2gkm2scuk78" />
-
 <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
@@ -21,9 +18,6 @@ fbq('track', 'PageView');
 <!-- PRELOAD - İLK GÖRSELI SAYFA YÜKLENMEDEN ÖNCE BAŞLAT -->
 <link rel="preload" as="image" href="" id="preloadImage1" fetchpriority="highest">
 
-<!-- Pixel Loader -->
-<script src="pixel-loader.js"></script>
-
 <!-- Posta Kodları -->
 <script src="posta-kodlari-yeni.js"></script>
 
@@ -31,7 +25,7 @@ fbq('track', 'PageView');
 <script>
 // Site ID için yardımcı fonksiyon
 function getAdminKey(key) {
-    var SITE_ID = 'emenkargon_online';
+    var SITE_ID = 'www_emenkargon_online';
     localStorage.setItem('__SITE_ID__', SITE_ID);
     return SITE_ID + '_admin5_' + key; // ADMİN-5'DEN VERİ OKU
 }
@@ -139,7 +133,7 @@ input::placeholder{color:#A0AEC3 !important;opacity:1}
 
 <script>
 // SITE_ID'yi global olarak tanımla (Firebase için)
-var SITE_ID = 'emenkargon_online';
+var SITE_ID = 'www_emenkargon_online';
 
 // Site ID için yardımcı fonksiyon
 function getAdminKey(key) {
@@ -167,23 +161,81 @@ function getAdminKey(key) {
 <div class="urunPage">
 <div style="width:100%;max-width:768px;margin:0 auto;">
 
-<!-- KAYAN YAZI ŞERİDİ -->
-<div style="width:100%;background:#000;overflow:hidden;white-space:nowrap;padding:6px 0;">
-<div style="display:inline-block;animation:kayanYazi 20s linear infinite;">
-<span style="color:#fff;font-size:12px;font-weight:bold;margin-right:50px;">🚚 AYNI GÜN KARGO</span>
-<span style="color:#fff;font-size:12px;font-weight:bold;margin-right:50px;">💳 KAPIDA ÖDEME</span>
-<span style="color:#fff;font-size:12px;font-weight:bold;margin-right:50px;">📦 HIZLI TESLİMAT</span>
-<span style="color:#fff;font-size:12px;font-weight:bold;margin-right:50px;">🔒 GÜVENLİ ALIŞVERİŞ</span>
-<span style="color:#fff;font-size:12px;font-weight:bold;margin-right:50px;">⭐ %100 MÜŞTERİ MEMNUNİYETİ</span>
-<span style="color:#fff;font-size:12px;font-weight:bold;margin-right:50px;">✅ ÜCRETSİZ KARGO</span>
-<span style="color:#fff;font-size:12px;font-weight:bold;margin-right:50px;">🚚 AYNI GÜN KARGO</span>
-<span style="color:#fff;font-size:12px;font-weight:bold;margin-right:50px;">💳 KAPIDA ÖDEME</span>
-<span style="color:#fff;font-size:12px;font-weight:bold;margin-right:50px;">📦 HIZLI TESLİMAT</span>
-<span style="color:#fff;font-size:12px;font-weight:bold;margin-right:50px;">🔒 GÜVENLİ ALIŞVERİŞ</span>
-<span style="color:#fff;font-size:12px;font-weight:bold;margin-right:50px;">⭐ %100 MÜŞTERİ MEMNUNİYETİ</span>
-<span style="color:#fff;font-size:12px;font-weight:bold;margin-right:50px;">✅ ÜCRETSİZ KARGO</span>
-</div>
-</div>
+<!-- KAYAN YAZI ŞERİDİ - ADMİN-4'TEN DİNAMİK -->
+<script>
+// Admin-4'ten kayan yazı ayarlarını oku ve dinamik olarak oluştur
+(function() {
+    function getAdminKey(key) { 
+        var siteId = 'www_emenkargon_online';
+        localStorage.setItem('__SITE_ID__', siteId);
+        return siteId + '_admin5_' + key; 
+    }
+    
+    var bgColor = localStorage.getItem(getAdminKey('banner_bg_color')) || '#000000';
+    var textColor = localStorage.getItem(getAdminKey('banner_text_color')) || '#ffffff';
+    
+    // Sabit yazılar
+    var texts = ['🚚 AYNI GÜN KARGO', '💳 KAPIDA ÖDEME', '📦 HIZLI TESLİMAT', '🔒 GÜVENLİ ALIŞVERİŞ', '⭐ %100 MÜŞTERİ MEMNUNİYETİ', '✅ ÜCRETSİZ KARGO'];
+    
+    document.write('<div style="width:100%;background:' + bgColor + ';overflow:hidden;white-space:nowrap;padding:6px 0;">');
+    document.write('<div id="bannerContent" style="display:inline-block;animation:kayanYazi 20s linear infinite;">');
+    
+    // Yazıları 2 kez tekrarla (kayan efekt için)
+    for (var j = 0; j < 2; j++) {
+        for (var i = 0; i < texts.length; i++) {
+            document.write('<span style="color:' + textColor + ';font-size:12px;font-weight:bold;margin-right:50px;">' + texts[i] + '</span>');
+        }
+    }
+    
+    document.write('</div>');
+    document.write('</div>');
+})();
+</script>
+
+<!-- ANLIK GÜNCELLEMELERİ DİNLE -->
+<script>
+// Admin-4'teki değişiklikleri anlık olarak dinle ve uygula
+(function() {
+    function getAdminKey(key) { 
+        var siteId = 'www_emenkargon_online';
+        return siteId + '_admin5_' + key; 
+    }
+    
+    // Kayan yazı şeridini güncelle
+    function updateBannerStrip() {
+        var bannerDiv = document.querySelector('div[style*="animation:kayanYazi"]');
+        if (bannerDiv && bannerDiv.parentElement) {
+            var bgColor = localStorage.getItem(getAdminKey('banner_bg_color')) || '#000000';
+            var textColor = localStorage.getItem(getAdminKey('banner_text_color')) || '#ffffff';
+            
+            // Arkaplan rengini güncelle
+            bannerDiv.parentElement.style.background = bgColor;
+            
+            // Yazı renklerini güncelle
+            var spans = bannerDiv.querySelectorAll('span');
+            for (var i = 0; i < spans.length; i++) {
+                spans[i].style.color = textColor;
+            }
+        }
+    }
+    
+    // localStorage değişikliklerini dinle
+    window.addEventListener('storage', function(e) {
+        if (e.key && (e.key.includes('_admin5_banner_bg_color') || e.key.includes('_admin5_banner_text_color'))) {
+            updateBannerStrip();
+        }
+    });
+    
+    // Sayfa içi değişiklikleri de dinle (aynı sekme)
+    var originalSetItem = localStorage.setItem;
+    localStorage.setItem = function(key, value) {
+        originalSetItem.apply(this, arguments);
+        if (key && (key.includes('_admin5_banner_bg_color') || key.includes('_admin5_banner_text_color'))) {
+            setTimeout(updateBannerStrip, 100);
+        }
+    };
+})();
+</script>
 <style>
 @keyframes kayanYazi {
   0% { transform: translateX(0); }
@@ -317,8 +369,8 @@ setTimeout(function() {
 <div class="formWrapper" style="position:relative;">
 
 <!-- HIZLI SİPARİŞ FORMU ÇUBUĞU -->
-<div style="width:100%;background:#000;padding:10px 0;text-align:center;border-radius:8px 8px 0 0;margin-bottom:10px;">
-<span style="color:#fff;font-size:20px;font-weight:900;letter-spacing:2px;display:inline-block;animation:buyukKucul 0.8s ease-in-out infinite;">📋 HIZLI SİPARİŞ FORMU</span>
+<div id="siparisSeridi" style="width:100%;background:#000;padding:10px 0;text-align:center;border-radius:8px 8px 0 0;margin-bottom:10px;">
+<span id="siparisSeridiText" style="color:#fff;font-size:20px;font-weight:900;letter-spacing:2px;display:inline-block;animation:buyukKucul 0.8s ease-in-out infinite;">📋 HIZLI SİPARİŞ FORMU</span>
 </div>
 
 <label class="formLabel" style="margin-top:0">Ödeme Yöntemi:</label>
@@ -397,19 +449,19 @@ setTimeout(function() {
 <!-- 4 ÇİFT AL -->
 <div id="adetSecim4" onclick="document.getElementById('secim4').checked=true;updateBorder(4);" style="border: 2px solid #ddd; border-radius: 15px; padding: 20px; margin-bottom: 15px; background: white; position: relative; cursor: pointer;">
   <div style="position: absolute; top: -10px; right: 20px; background: #000; color: white; padding: 5px 15px; border-radius: 20px; font-size: 12px; font-weight: bold; min-width: 150px; width: auto; text-align: center; white-space: nowrap;">
-    <span id="urun4EtiketDisplay">EKSTRA %35 İNDİRİM</span>
+    <span id="urun5EtiketDisplay">EKSTRA %35 İNDİRİM</span>
   </div>
   <div style="display: flex; align-items: center;">
     <div style="display: flex; align-items: center;">
       <input type="radio" name="urunSecim" value="4" id="secim4" onclick="updateBorder(4)" style="width: 20px; height: 20px; margin-right: 15px; accent-color: #333;">
       <div>
-        <div id="urun4IsimDisplay" style="font-size: 18px; font-weight: bold; color: #333; margin-bottom: 5px; word-wrap: break-word;">4 Çift Al</div>
-        <span id="urun4TasarrufDisplay" style="background: #dc3545; color: white; padding: 4px 12px; border-radius: 15px; font-size: 12px; font-weight: bold; min-width: 120px; width: auto; text-align: center; display: inline-block; white-space: nowrap;">₺95.20 TASARRUF</span>
+        <div id="urun5IsimDisplay" style="font-size: 18px; font-weight: bold; color: #333; margin-bottom: 5px; word-wrap: break-word;">4 Çift Al</div>
+        <span id="urun5TasarrufDisplay" style="background: #dc3545; color: white; padding: 4px 12px; border-radius: 15px; font-size: 12px; font-weight: bold; min-width: 120px; width: auto; text-align: center; display: inline-block; white-space: nowrap;">₺95.20 TASARRUF</span>
       </div>
     </div>
     <div style="margin-left: auto; text-align: right;">
-      <div style="font-size: 24px; font-weight: bold; color: #333;"><span id="urun4FiyatDisplay">24.95</span></div>
-      <div style="font-size: 14px; color: #999; text-decoration: line-through;"><span id="urun4EskiFiyatDisplay">53.00</span></div>
+      <div style="font-size: 24px; font-weight: bold; color: #333;"><span id="urun5FiyatDisplay">24.95</span></div>
+      <div style="font-size: 14px; color: #999; text-decoration: line-through;"><span id="urun5EskiFiyatDisplay">53.00</span></div>
     </div>
   </div>
 </div>
@@ -838,7 +890,7 @@ window.onload = function() {
     }, 1000);
 };
 
-var pageId = getAdminKey('admin_1_sayfa'); // ÜRÜN-1'İN SAYFA VERİLERİ
+var pageId = getAdminKey('admin_5_sayfa'); // ÜRÜN-5'İN SAYFA VERİLERİ
 
 // 🔄 Migration: Eski formatı yeni formata taşı (bir kez çalışır)
 (function() {
@@ -928,7 +980,7 @@ function loadSavedImages() {
         
         // Eğer hala yoksa, eski format (site ID'siz) key'i dene
         if (!saved) {
-            var oldKey = 'sayfa1_topImg' + i;
+            var oldKey = 'sayfa5_topImg' + i;
             saved = localStorage.getItem(oldKey);
             if (!saved) {
                 saved = localStorage.getItem(oldKey + '_url');
@@ -955,9 +1007,9 @@ function loadSavedImages() {
     }
     // Eski format kontrolü
     if (!bottomSaved) {
-        bottomSaved = localStorage.getItem('sayfa1_bottomImg1');
+        bottomSaved = localStorage.getItem('sayfa5_bottomImg1');
         if (!bottomSaved) {
-            bottomSaved = localStorage.getItem('sayfa1_bottomImg1_url');
+            bottomSaved = localStorage.getItem('sayfa5_bottomImg1_url');
         }
     }
     if (bottomSaved) {
@@ -1213,7 +1265,7 @@ function validateForm() {
                 tarih: tarihStr,
                 musteri: ad,
                 telefon: telefon,
-                forum: 1,
+                forum: 5,
                 tutar: tutar,
                 il: document.getElementById('il-select').options[document.getElementById('il-select').selectedIndex].text,
                 ilce: ilce,
@@ -1361,17 +1413,16 @@ function validateForm() {
                 });
                 
                 // Pixel eventleri tetikle (sipariş başarıyla kaydedildi)
-                var fiyatNumeric = (typeof formatPrice === 'function') ? formatPrice(tutar) : parseFloat(tutar.replace(/[^0-9]/g, '')) || 0;
-                var productInfo = (typeof getProductInfo === 'function') ? getProductInfo(secimNum) : { contentId: 'product_1', contentName: 'Ürün', quantity: 1 };
+                var fiyatNumeric = parseFloat(tutar.replace(/[^0-9]/g, '')) || 0;
                 
                 // Meta Pixel Lead eventi
                 if(typeof fireMetaLeadEvent === 'function'){
-                    fireMetaLeadEvent(fiyatNumeric, productInfo.contentName, productInfo.contentId);
+                    fireMetaLeadEvent(fiyatNumeric);
                 }
                 
                 // TikTok Pixel eventi
                 if(typeof fireTikTokSubmitFormEvent === 'function'){
-                    fireTikTokSubmitFormEvent(fiyatNumeric, productInfo.contentName, productInfo.contentId);
+                    fireTikTokSubmitFormEvent(fiyatNumeric);
                 }
             });
             // ==========================================
@@ -1476,7 +1527,7 @@ function createConfetti() {
       database.ref(SITE_ID + '/istatistikler').once('value', function(istatSnap) {
         var istat = istatSnap.val() || {};
         var kayitliTarih = istat.bugunTarih || '';
-        console.log('📊 İstatistik güncelleniyor... urun1Ziyaret:', (istat.urun1Ziyaret || 0) + 1);
+        console.log('📊 İstatistik güncelleniyor... urun5Ziyaret:', (istat.urun5Ziyaret || 0) + 1);
         
         if(kayitliTarih !== bugunPadded) {
           database.ref(SITE_ID + '/istatistikler').update({
@@ -1485,14 +1536,14 @@ function createConfetti() {
             bugunSiparis: 0,
             bugunCiro: 0,
             toplamZiyaretci: (istat.toplamZiyaretci || 0) + 1,
-            urun1Ziyaret: (istat.urun1Ziyaret || 0) + 1
-          }).then(function() { console.log('✅ urun1Ziyaret güncellendi!'); });
+            urun5Ziyaret: (istat.urun5Ziyaret || 0) + 1
+          }).then(function() { console.log('✅ urun5Ziyaret güncellendi!'); });
         } else {
           database.ref(SITE_ID + '/istatistikler').update({
             bugunZiyaretci: (istat.bugunZiyaretci || 0) + 1,
             toplamZiyaretci: (istat.toplamZiyaretci || 0) + 1,
-            urun1Ziyaret: (istat.urun1Ziyaret || 0) + 1
-          }).then(function() { console.log('✅ urun1Ziyaret güncellendi!'); });
+            urun5Ziyaret: (istat.urun5Ziyaret || 0) + 1
+          }).then(function() { console.log('✅ urun5Ziyaret güncellendi!'); });
         }
       });
       // ================================================
@@ -1529,7 +1580,7 @@ document.addEventListener('DOMContentLoaded', function(){
       var sehir = this.options[this.selectedIndex].text;
       var visitorId = localStorage.getItem('visitor_id');
       var bugun = new Date().toLocaleDateString('tr-TR');
-      database.ref(SITE_ID + '/ziyaretciler/' + visitorId + '_' + bugun.replace(/\./g, '-') + '_sayfa1/sehir').set(sehir);
+      database.ref(SITE_ID + '/ziyaretciler/' + visitorId + '_' + bugun.replace(/\./g, '-') + '_sayfa5/sehir').set(sehir);
     });
   }
 });
@@ -1552,23 +1603,23 @@ function gorselYuklendi() {
 
 // Görselleri yükle - Firebase öncelikli
 function gorselleriYukle() {
-  var pageId = getAdminKey('admin_1_sayfa');
+  var pageId = getAdminKey('admin_5_sayfa');
   
   // Önce localStorage'dan hızlı yükle (anlık görüntü için)
   for(var i = 1; i <= 15; i++) {
     var img = document.getElementById('topImage' + i);
     var saved = localStorage.getItem(pageId + '_topImg' + i);
     if (!saved) saved = localStorage.getItem(pageId + '_topImg' + i + '_url');
-    if (!saved) saved = localStorage.getItem('sayfa1_topImg' + i);
-    if (!saved) saved = localStorage.getItem('sayfa1_topImg' + i + '_url');
+    if (!saved) saved = localStorage.getItem('sayfa5_topImg' + i);
+    if (!saved) saved = localStorage.getItem('sayfa5_topImg' + i + '_url');
     if(img && saved) img.src = saved;
   }
   
   var bottomImg = document.getElementById('bottomImage');
   var bottomSaved = localStorage.getItem(pageId + '_bottomImg1');
   if (!bottomSaved) bottomSaved = localStorage.getItem(pageId + '_bottomImg1_url');
-  if (!bottomSaved) bottomSaved = localStorage.getItem('sayfa1_bottomImg1');
-  if (!bottomSaved) bottomSaved = localStorage.getItem('sayfa1_bottomImg1_url');
+  if (!bottomSaved) bottomSaved = localStorage.getItem('sayfa5_bottomImg1');
+  if (!bottomSaved) bottomSaved = localStorage.getItem('sayfa5_bottomImg1_url');
   if(bottomImg && bottomSaved) bottomImg.src = bottomSaved;
   
   // Firebase'den güncel görselleri çek ve localStorage'ı güncelle
@@ -2204,6 +2255,79 @@ function createOptionsDiv(id) {
 document.addEventListener('DOMContentLoaded', function() {
     console.log('🚀 ÜRÜN-5: Sayfa yüklendi, forum ayarları yapılıyor...');
     
+    var siparisSeridi = document.getElementById('siparisSeridi');
+    var siparisSeridiText = document.getElementById('siparisSeridiText');
+    var lastBgColor = '';
+    var lastTextColor = '';
+    
+    // Renkleri kontrol et ve güncelle
+    function checkColors() {
+        var bgColor = localStorage.getItem('www_emenkargon_online_admin5_siparis_seridi_bg_color') || '#000000';
+        var textColor = localStorage.getItem('www_emenkargon_online_admin5_siparis_seridi_text_color') || '#ffffff';
+        
+        if (bgColor !== lastBgColor && siparisSeridi) {
+            siparisSeridi.style.background = bgColor;
+            lastBgColor = bgColor;
+            console.log('🔄 Arkaplan rengi güncellendi:', bgColor);
+        }
+        
+        if (textColor !== lastTextColor && siparisSeridiText) {
+            siparisSeridiText.style.color = textColor;
+            lastTextColor = textColor;
+            console.log('🔄 Yazı rengi güncellendi:', textColor);
+        }
+    }
+    
+    // İlk yükleme
+    checkColors();
+    
+    // 🔥 FIREBASE ANLIK DİNLEYİCİ - Admin-4'ten gelen renk değişikliklerini dinle
+    onFirebaseReady(function(db) {
+        try {
+            console.log('🔥 Firebase hazır - Admin-4 renk dinleyicisi başlatılıyor...');
+            
+            // Admin-4'ün renk verilerini dinle
+            db.ref('admin5/siparisSeridiColors').on('value', function(snapshot) {
+                var data = snapshot.val();
+                if (data && data.bgColor && data.textColor) {
+                    console.log('🔥 Firebase\'den renk değişikliği geldi:', data);
+                    
+                    // Hızlı sipariş şeridini anında güncelle
+                    if (siparisSeridi && data.bgColor !== lastBgColor) {
+                        siparisSeridi.style.background = data.bgColor;
+                        lastBgColor = data.bgColor;
+                        console.log('🔥 ANLIK - Arkaplan rengi güncellendi:', data.bgColor);
+                    }
+                    
+                    if (siparisSeridiText && data.textColor !== lastTextColor) {
+                        siparisSeridiText.style.color = data.textColor;
+                        lastTextColor = data.textColor;
+                        console.log('🔥 ANLIK - Yazı rengi güncellendi:', data.textColor);
+                    }
+                    
+                    // localStorage'a da kaydet (yedek olarak)
+                    localStorage.setItem('www_emenkargon_online_admin5_siparis_seridi_bg_color', data.bgColor);
+                    localStorage.setItem('www_emenkargon_online_admin5_siparis_seridi_text_color', data.textColor);
+                }
+            });
+            
+            console.log('✅ Firebase renk dinleyicisi aktif!');
+        } catch(e) {
+            console.error('❌ Firebase dinleyici hatası:', e);
+            // Firebase hatası varsa localStorage kontrolüne geri dön
+            setInterval(checkColors, 200);
+        }
+    });
+    
+    // Firebase yüklenene kadar localStorage kontrolü yap
+    var firebaseCheckInterval = setInterval(function() {
+        if (typeof onFirebaseReady === 'function') {
+            clearInterval(firebaseCheckInterval);
+        } else {
+            checkColors();
+        }
+    }, 200);
+    
     // ÜRÜN FORUM AYARLARINI ZORLA TRUE YAP - HEPSİNİ AKTİF ET
     for (var i = 1; i <= 8; i++) {
         var urunKey = getAdminKey('urun' + i + '_aktif');
@@ -2347,5 +2471,7 @@ function urunBilgileriEkranaYaz() {
 
 </body>
 </html>
+
+
 
 

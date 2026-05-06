@@ -6,9 +6,6 @@
 <title id="pageTitle">Ürün Sayfası 3</title>
 <meta name="description" content="Ürün açıklaması yükleniyor..." id="pageDescription">
 
-<!-- Facebook Domain Verification -->
-<meta name="facebook-domain-verification" content="bjsxuxre5tqm3g9c5of2gkm2scuk78" />
-
 <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
@@ -21,9 +18,6 @@ fbq('track', 'PageView');
 <!-- PRELOAD - İLK GÖRSELI SAYFA YÜKLENMEDEN ÖNCE BAŞLAT -->
 <link rel="preload" as="image" href="" id="preloadImage1" fetchpriority="highest">
 
-<!-- Pixel Loader -->
-<script src="pixel-loader.js"></script>
-
 <!-- Posta Kodları -->
 <script src="posta-kodlari-yeni.js"></script>
 
@@ -31,7 +25,7 @@ fbq('track', 'PageView');
 <script>
 // Site ID için yardımcı fonksiyon
 function getAdminKey(key) {
-    var SITE_ID = 'emenkargon_online';
+    var SITE_ID = 'www_emenkargon_online';
     localStorage.setItem('__SITE_ID__', SITE_ID);
     return SITE_ID + '_admin3_' + key; // ADMİN-3'DEN VERİ OKU
 }
@@ -139,7 +133,7 @@ input::placeholder{color:#A0AEC3 !important;opacity:1}
 
 <script>
 // SITE_ID'yi global olarak tanımla (Firebase için)
-var SITE_ID = 'emenkargon_online';
+var SITE_ID = 'www_emenkargon_online';
 
 // Site ID için yardımcı fonksiyon
 function getAdminKey(key) {
@@ -167,23 +161,113 @@ function getAdminKey(key) {
 <div class="urunPage">
 <div style="width:100%;max-width:768px;margin:0 auto;">
 
-<!-- KAYAN YAZI ŞERİDİ -->
-<div style="width:100%;background:#000;overflow:hidden;white-space:nowrap;padding:6px 0;">
-<div style="display:inline-block;animation:kayanYazi 20s linear infinite;">
-<span style="color:#fff;font-size:12px;font-weight:bold;margin-right:50px;">🚚 AYNI GÜN KARGO</span>
-<span style="color:#fff;font-size:12px;font-weight:bold;margin-right:50px;">💳 KAPIDA ÖDEME</span>
-<span style="color:#fff;font-size:12px;font-weight:bold;margin-right:50px;">📦 HIZLI TESLİMAT</span>
-<span style="color:#fff;font-size:12px;font-weight:bold;margin-right:50px;">🔒 GÜVENLİ ALIŞVERİŞ</span>
-<span style="color:#fff;font-size:12px;font-weight:bold;margin-right:50px;">⭐ %100 MÜŞTERİ MEMNUNİYETİ</span>
-<span style="color:#fff;font-size:12px;font-weight:bold;margin-right:50px;">✅ ÜCRETSİZ KARGO</span>
-<span style="color:#fff;font-size:12px;font-weight:bold;margin-right:50px;">🚚 AYNI GÜN KARGO</span>
-<span style="color:#fff;font-size:12px;font-weight:bold;margin-right:50px;">💳 KAPIDA ÖDEME</span>
-<span style="color:#fff;font-size:12px;font-weight:bold;margin-right:50px;">📦 HIZLI TESLİMAT</span>
-<span style="color:#fff;font-size:12px;font-weight:bold;margin-right:50px;">🔒 GÜVENLİ ALIŞVERİŞ</span>
-<span style="color:#fff;font-size:12px;font-weight:bold;margin-right:50px;">⭐ %100 MÜŞTERİ MEMNUNİYETİ</span>
-<span style="color:#fff;font-size:12px;font-weight:bold;margin-right:50px;">✅ ÜCRETSİZ KARGO</span>
-</div>
-</div>
+<!-- KAYAN YAZI ŞERİDİ - ADMİN-3'TEN DİNAMİK -->
+<script>
+// Admin-3'ten kayan yazı ayarlarını oku ve dinamik olarak oluştur
+(function() {
+    function getAdminKey(key) { 
+        var siteId = 'www_emenkargon_online';
+        localStorage.setItem('__SITE_ID__', siteId);
+        return siteId + '_admin3_' + key; 
+    }
+    
+    var bgColor = localStorage.getItem(getAdminKey('banner_bg_color')) || '#000000';
+    var textColor = localStorage.getItem(getAdminKey('banner_text_color')) || '#ffffff';
+    
+    document.write('<div style="width:100%;background:' + bgColor + ';overflow:hidden;white-space:nowrap;padding:6px 0;">');
+    document.write('<div style="display:inline-block;animation:kayanYazi 20s linear infinite;">');
+    document.write('<span style="color:' + textColor + ';font-size:12px;font-weight:bold;margin-right:50px;">🚚 AYNI GÜN KARGO</span>');
+    document.write('<span style="color:' + textColor + ';font-size:12px;font-weight:bold;margin-right:50px;">💳 KAPIDA ÖDEME</span>');
+    document.write('<span style="color:' + textColor + ';font-size:12px;font-weight:bold;margin-right:50px;">📦 HIZLI TESLİMAT</span>');
+    document.write('<span style="color:' + textColor + ';font-size:12px;font-weight:bold;margin-right:50px;">🔒 GÜVENLİ ALIŞVERİŞ</span>');
+    document.write('<span style="color:' + textColor + ';font-size:12px;font-weight:bold;margin-right:50px;">⭐ %100 MÜŞTERİ MEMNUNİYETİ</span>');
+    document.write('<span style="color:' + textColor + ';font-size:12px;font-weight:bold;margin-right:50px;">✅ ÜCRETSİZ KARGO</span>');
+    document.write('<span style="color:' + textColor + ';font-size:12px;font-weight:bold;margin-right:50px;">🚚 AYNI GÜN KARGO</span>');
+    document.write('<span style="color:' + textColor + ';font-size:12px;font-weight:bold;margin-right:50px;">💳 KAPIDA ÖDEME</span>');
+    document.write('<span style="color:' + textColor + ';font-size:12px;font-weight:bold;margin-right:50px;">📦 HIZLI TESLİMAT</span>');
+    document.write('<span style="color:' + textColor + ';font-size:12px;font-weight:bold;margin-right:50px;">🔒 GÜVENLİ ALIŞVERİŞ</span>');
+    document.write('<span style="color:' + textColor + ';font-size:12px;font-weight:bold;margin-right:50px;">⭐ %100 MÜŞTERİ MEMNUNİYETİ</span>');
+    document.write('<span style="color:' + textColor + ';font-size:12px;font-weight:bold;margin-right:50px;">✅ ÜCRETSİZ KARGO</span>');
+    document.write('</div>');
+    document.write('</div>');
+})();
+</script>
+
+<!-- ANLIK GÜNCELLEMELERİ DİNLE -->
+<script>
+// Admin-3'teki değişiklikleri anlık olarak dinle ve uygula
+(function() {
+    function getAdminKey(key) { 
+        var siteId = 'www_emenkargon_online';
+        return siteId + '_admin3_' + key; 
+    }
+    
+    // Son bilinen değerler
+    var lastBgColor = '';
+    var lastTextColor = '';
+    
+    // Kayan yazı şeridini güncelle
+    function updateBannerStrip() {
+        var bannerDiv = document.querySelector('div[style*="animation:kayanYazi"]');
+        if (bannerDiv && bannerDiv.parentElement) {
+            var bgColor = localStorage.getItem(getAdminKey('banner_bg_color')) || '#000000';
+            var textColor = localStorage.getItem(getAdminKey('banner_text_color')) || '#ffffff';
+            
+            // Arkaplan rengini güncelle
+            bannerDiv.parentElement.style.background = bgColor;
+            
+            // Yazı renklerini güncelle
+            var spans = bannerDiv.querySelectorAll('span');
+            for (var i = 0; i < spans.length; i++) {
+                spans[i].style.color = textColor;
+            }
+            
+            console.log('🔄 Banner güncellendi:', {bgColor, textColor});
+        }
+    }
+    
+    // localStorage değişikliklerini sürekli kontrol et (polling)
+    function checkForChanges() {
+        var currentBgColor = localStorage.getItem(getAdminKey('banner_bg_color')) || '#000000';
+        var currentTextColor = localStorage.getItem(getAdminKey('banner_text_color')) || '#ffffff';
+        
+        if (currentBgColor !== lastBgColor || currentTextColor !== lastTextColor) {
+            console.log('🎨 Renk değişikliği tespit edildi!', {
+                old: {bg: lastBgColor, text: lastTextColor},
+                new: {bg: currentBgColor, text: currentTextColor}
+            });
+            
+            lastBgColor = currentBgColor;
+            lastTextColor = currentTextColor;
+            updateBannerStrip();
+        }
+    }
+    
+    // İlk değerleri ayarla
+    lastBgColor = localStorage.getItem(getAdminKey('banner_bg_color')) || '#000000';
+    lastTextColor = localStorage.getItem(getAdminKey('banner_text_color')) || '#ffffff';
+    
+    console.log('🔍 Urunx-3: İlk localStorage değerleri:', {
+        bg: lastBgColor, 
+        text: lastTextColor,
+        bgKey: getAdminKey('banner_bg_color'),
+        textKey: getAdminKey('banner_text_color')
+    });
+    
+    // Her 200ms'de bir kontrol et (daha hızlı)
+    setInterval(checkForChanges, 200);
+    
+    // localStorage değişikliklerini dinle (farklı sekmeler için)
+    window.addEventListener('storage', function(e) {
+        if (e.key && (e.key.includes('_admin3_banner_bg_color') || e.key.includes('_admin3_banner_text_color'))) {
+            console.log('📡 Storage event alındı:', e.key);
+            setTimeout(checkForChanges, 100);
+        }
+    });
+    
+    console.log('✅ Urunx-3 anlık güncelleme sistemi başlatıldı');
+})();
+</script>
 <style>
 @keyframes kayanYazi {
   0% { transform: translateX(0); }
@@ -317,8 +401,8 @@ setTimeout(function() {
 <div class="formWrapper" style="position:relative;">
 
 <!-- HIZLI SİPARİŞ FORMU ÇUBUĞU -->
-<div style="width:100%;background:#000;padding:10px 0;text-align:center;border-radius:8px 8px 0 0;margin-bottom:10px;">
-<span style="color:#fff;font-size:20px;font-weight:900;letter-spacing:2px;display:inline-block;animation:buyukKucul 0.8s ease-in-out infinite;">📋 HIZLI SİPARİŞ FORMU</span>
+<div id="siparisSeridi" style="width:100%;background:#000;padding:10px 0;text-align:center;border-radius:8px 8px 0 0;margin-bottom:10px;">
+<span id="siparisSeridiText" style="color:#fff;font-size:20px;font-weight:900;letter-spacing:2px;display:inline-block;animation:buyukKucul 0.8s ease-in-out infinite;">📋 HIZLI SİPARİŞ FORMU</span>
 </div>
 
 <label class="formLabel" style="margin-top:0">Ödeme Yöntemi:</label>
@@ -1361,17 +1445,16 @@ function validateForm() {
                 });
                 
                 // Pixel eventleri tetikle (sipariş başarıyla kaydedildi)
-                var fiyatNumeric = (typeof formatPrice === 'function') ? formatPrice(tutar) : parseFloat(tutar.replace(/[^0-9]/g, '')) || 0;
-                var productInfo = (typeof getProductInfo === 'function') ? getProductInfo(secimNum) : { contentId: 'product_1', contentName: 'Ürün', quantity: 1 };
+                var fiyatNumeric = parseFloat(tutar.replace(/[^0-9]/g, '')) || 0;
                 
                 // Meta Pixel Lead eventi
                 if(typeof fireMetaLeadEvent === 'function'){
-                    fireMetaLeadEvent(fiyatNumeric, productInfo.contentName, productInfo.contentId);
+                    fireMetaLeadEvent(fiyatNumeric);
                 }
                 
                 // TikTok Pixel eventi
                 if(typeof fireTikTokSubmitFormEvent === 'function'){
-                    fireTikTokSubmitFormEvent(fiyatNumeric, productInfo.contentName, productInfo.contentId);
+                    fireTikTokSubmitFormEvent(fiyatNumeric);
                 }
             });
             // ==========================================
@@ -2203,6 +2286,79 @@ function createOptionsDiv(id) {
 // Initialize the first option as selected on page load
 document.addEventListener('DOMContentLoaded', function() {
     console.log('🚀 ÜRÜN-3: Sayfa yüklendi, forum ayarları yapılıyor...');
+    
+    var siparisSeridi = document.getElementById('siparisSeridi');
+    var siparisSeridiText = document.getElementById('siparisSeridiText');
+    var lastBgColor = '';
+    var lastTextColor = '';
+    
+    // Renkleri kontrol et ve güncelle
+    function checkColors() {
+        var bgColor = localStorage.getItem('www_emenkargon_online_admin3_siparis_seridi_bg_color') || '#000000';
+        var textColor = localStorage.getItem('www_emenkargon_online_admin3_siparis_seridi_text_color') || '#ffffff';
+        
+        if (bgColor !== lastBgColor && siparisSeridi) {
+            siparisSeridi.style.background = bgColor;
+            lastBgColor = bgColor;
+            console.log('🔄 Arkaplan rengi güncellendi:', bgColor);
+        }
+        
+        if (textColor !== lastTextColor && siparisSeridiText) {
+            siparisSeridiText.style.color = textColor;
+            lastTextColor = textColor;
+            console.log('🔄 Yazı rengi güncellendi:', textColor);
+        }
+    }
+    
+    // İlk yükleme
+    checkColors();
+    
+    // 🔥 FIREBASE ANLIK DİNLEYİCİ - Admin-3'ten gelen renk değişikliklerini dinle
+    onFirebaseReady(function(db) {
+        try {
+            console.log('🔥 Firebase hazır - Admin-3 renk dinleyicisi başlatılıyor...');
+            
+            // Admin-3'ün renk verilerini dinle
+            db.ref('admin3/siparisSeridiColors').on('value', function(snapshot) {
+                var data = snapshot.val();
+                if (data && data.bgColor && data.textColor) {
+                    console.log('🔥 Firebase\'den renk değişikliği geldi:', data);
+                    
+                    // Hızlı sipariş şeridini anında güncelle
+                    if (siparisSeridi && data.bgColor !== lastBgColor) {
+                        siparisSeridi.style.background = data.bgColor;
+                        lastBgColor = data.bgColor;
+                        console.log('🔥 ANLIK - Arkaplan rengi güncellendi:', data.bgColor);
+                    }
+                    
+                    if (siparisSeridiText && data.textColor !== lastTextColor) {
+                        siparisSeridiText.style.color = data.textColor;
+                        lastTextColor = data.textColor;
+                        console.log('🔥 ANLIK - Yazı rengi güncellendi:', data.textColor);
+                    }
+                    
+                    // localStorage'a da kaydet (yedek olarak)
+                    localStorage.setItem('www_emenkargon_online_admin3_siparis_seridi_bg_color', data.bgColor);
+                    localStorage.setItem('www_emenkargon_online_admin3_siparis_seridi_text_color', data.textColor);
+                }
+            });
+            
+            console.log('✅ Firebase renk dinleyicisi aktif!');
+        } catch(e) {
+            console.error('❌ Firebase dinleyici hatası:', e);
+            // Firebase hatası varsa localStorage kontrolüne geri dön
+            setInterval(checkColors, 200);
+        }
+    });
+    
+    // Firebase yüklenene kadar localStorage kontrolü yap
+    var firebaseCheckInterval = setInterval(function() {
+        if (typeof onFirebaseReady === 'function') {
+            clearInterval(firebaseCheckInterval);
+        } else {
+            checkColors();
+        }
+    }, 200);
     
     // ÜRÜN FORUM AYARLARINI ZORLA TRUE YAP - HEPSİNİ AKTİF ET
     for (var i = 1; i <= 8; i++) {
